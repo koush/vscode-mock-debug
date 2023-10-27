@@ -507,7 +507,7 @@ export class QuickJSDebugSession extends SourcemapSession {
 
 	protected async threadsRequest(response: DebugProtocol.ThreadsResponse): Promise<void> {
 		if (this._threads.size === 0) {
-			await new Promise((resolve, reject) => {
+			await new Promise<void>((resolve, reject) => {
 				this.once('quickjs-thread', () => {
 					resolve();
 				});
